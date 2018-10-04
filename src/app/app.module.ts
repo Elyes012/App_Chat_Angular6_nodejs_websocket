@@ -7,17 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import {NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent, NgbdModalContent} from './popup/popup.component';
 
 
 
-const config: SocketIoConfig = { url: 'http://localhost:8200', options: {} };
+
+const config: SocketIoConfig = { url: 'http://localhost:8010', options: {} };
 @NgModule({
   declarations: [
-    AppComponent
-
-
+    AppComponent,
+    PopupComponent,
+    NgbdModalContent
 
   ],
+  entryComponents: [NgbdModalContent],
+
   imports: [
     BrowserModule,
     SocketIoModule.forRoot(config),
@@ -25,6 +29,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8200', options: {} };
     HttpClientModule,
     FormsModule,
     NgbModule,
+
 
 
   ],
