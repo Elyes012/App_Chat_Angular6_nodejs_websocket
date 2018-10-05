@@ -1,7 +1,7 @@
 var express = require("express")
 var mongoose = require("mongoose")
 var bodyParser = require("body-parser")
-const path = require('path');
+//const path = require('path');
 var app = express()
 var http = require("http").Server(app)
 var io = require("socket.io")(http)
@@ -38,7 +38,6 @@ mongoose.connect(conString, (err) => {
 
 app.get("/chats", (req, res) => {
   Chats.find({}, (error, chats) => {
-    // io.emit("chat", chats)
     res.send(chats)
   })
 })
@@ -46,12 +45,12 @@ app.get("/chats", (req, res) => {
 io.on("connection", (socket) => {
   console.log("Socket is connected...")
 
-  socket.on('message', function (chat) {
+  socket.on('message', function () {
 
-    io.in(chat).emit('new message', {
+    /*io.in().emit('new message', {
       message: chat,
 
-    });
+    });*/
 
     console.log('new message in socket')
   })
@@ -75,7 +74,7 @@ io.on("connection", (socket) => {
   socket.on('join', function(data2){
     //joining
     //socket.join(data2);
-    io.emit('broadcast', {user:data2.user, message:'has joined this room chat.'}); // emit an event to all connected sockets
+    io.emit('broadcast', {user:data2.user, message:': has joined this room chat.'}); // emit an event to all connected sockets
    //socket.broadcast.to(data2).emit('new user joined', {user:data2.user, message:'has joined this room chat.'});
     console.log(data2.user + ' : joined the chat ');
 

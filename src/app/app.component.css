@@ -216,3 +216,10 @@ img {
   height: 516px;
   overflow-y: auto;
 }
+
+.newuser{
+  color: #05728f;
+  font-size: 17px;
+  font-weight:bold;
+
+}

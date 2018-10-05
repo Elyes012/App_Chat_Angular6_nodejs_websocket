@@ -23,12 +23,17 @@ export class ChatService {
   }
 
 
-  getnewuser(userjoin) {
-      console.log('here is get new user with service');
-      this.socket.on('brodcast', userjoin);
-  }
+  getnewuser() {
+        return this.socket
+          .fromEvent('broadcast');
+      }
 
 
+      getMessage() {
+        return this.socket
+          .fromEvent('chat');
+
+      }
   /*insertion message + user*/
   insertMessage(data) {
     this.http.post('http://localhost:8010/chats', data)

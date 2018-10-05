@@ -9,9 +9,6 @@ import { ChatService } from '../chat.service';
   template: `
   <div class="modal-header">
   <h4 class="modal-title"> Chat !</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-  <span aria-hidden="true">&times;</span>
-  </button>
   </div>
   <div class="modal-body">
   <input class="form-control" id="ex3" type="text" placeholder="Put Name" [(ngModel)]="name">
